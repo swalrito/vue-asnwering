@@ -1,24 +1,37 @@
 <template>
 <section>
 	<header>
-		<span v-if="fatherComponent == home">
+		<span v-if="fatherComponent == 'home'">
 		第一周
+		</span>
+		<span v-if="fatherComponent == 'details'">
+		第一题
 		</span>
 	</header>
 
-	<div v-if="fatherComponent == home">
-		<div class="home_logo">
-		<router-link to="item">
-			<img src="../assets/img/1-4.png" class="btn_start">
-		</router-link>
-			
-		</div>
+	<div v-if="fatherComponent == 'home'">
+		<div class="home_logo"></div>
+		<router-link to="details" class="btn_start">
+		</router-link>		
+	</div>
+
+	<div v-if="fatherComponent == 'details'" class="details">
+	<div class="details_content">
+		<p>题目一</p>
+	<ul>
+		<li>1111</li>
+		<li>2222</li>
+		<li>3333</li>
+		<li>4444</li>
+	</ul>
+	</div>
+	<span class="button_next"></span>
 	</div>
 </section>
 </template>
 
 <script>
-	export default[
+	export default
 	{
 		name:'container',
 		props:['fatherComponent'],
@@ -33,7 +46,7 @@
 			//初始化信息//
 		
 		}
-	}]
+	}
 </script>
 
 <style>
@@ -86,12 +99,53 @@ header span{
 	margin-left: -5rem;
 	margin-top: -4rem;
 }
-.home_logo .btn_start{
+.btn_start{
+	background: url(../assets/img/1-4.png);
 	position: absolute;
 	width: 2.31rem;
 	height: 1.12rem;
 	left: 50%;
 	margin-left: -1.15rem;
-	bottom: 0.13rem;
+	bottom: 4.5rem;
+}
+
+.details{
+	background: url(../assets/img/2-1.png) no-repeat;
+	background-size: 100% 100%;
+	position: absolute;
+	width: 7.04rem;
+	height: 6.21rem;
+	left: 50%;
+	margin-left: -3.5rem;
+	top: 50%;
+	margin-top: -3.1rem;
+}
+.details_content{
+	position: relative;
+	top: 1rem;
+	width: 7.04rem;
+	height: 6.21rem;
+	color: #ffffff;
+	font-size: 0.5rem;
+	font-weight: lighter;
+    font-family: 'Microsoft YaHei';
+}
+.details_content p{
+	position: absolute;
+	left: 1rem;
+}
+.details_content ul{
+	position: relative;
+	top: 1rem;
+}
+
+.button_next{
+	display: block;
+	position: absolute;
+	background: url(../assets/img/2-2.png) no-repeat;
+	width: 2.31rem;
+	height: 1.12rem;
+	left: 50%;
+	margin-left: -1.15rem;
 }
 </style>

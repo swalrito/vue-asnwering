@@ -2,7 +2,7 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import container from './components/container'
-import routes from './router'
+import routes from './router/index'
 import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
@@ -11,7 +11,5 @@ const router = new VueRouter({
 })
 
 new Vue({
-	components:{container},
-	template:'<container/>',
 	router
 }).$mount('#app')

@@ -1,24 +1,24 @@
 import App from '../App'
 
-const home= r=> require.ensure([],() => r(require("../page/home/")),'home')
-const details=r => require.ensure([],() => r(require('../page/details/')),'details')
-const score= r => require.ensure([],() => r(require('../page/score/')),'score')
+const home= r=> require.ensure([],() => r(require("../page/home")),'home')
+const details= r => require.ensure([],() => r(require('../page/details')),'details')
+const score= r => require.ensure([],() => r(require('../page/score')),'score')
 export default[
 {
 	path:'/',
-	comment:App,
+	component:App,
 	children:[
 	{
 		path:'',
-		comment:home
+		component:home
 	},
 	{
 		path:'/details',
-		comment:details
+		component:details
 	},
 	{
 		path:'/score',
-		comment:score
+		component:score
 	}
 	]
 }]
