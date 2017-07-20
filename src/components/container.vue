@@ -26,7 +26,7 @@
 	</ul>
 	</div>
 	<span class="button next_button" @click="nextQuestion(this.choose_id)" v-if="itemNum < itemDetails.length"></span>
-	<span class="button submit_button" @click="nextQuestion(this.choose_id)" v-else></span>
+	<span class="button submit_button" @click="submitScore" v-else ></span>
 	</div>
 </section>
 </template>
@@ -66,6 +66,17 @@ export default{
 			},
 			choosed(num){
 				this.choose_id=num;
+			},
+			submitScore(){
+				//达到最后一题，提交后跳转分数页面并且计算得分//
+				if(this.choose_id!=null){
+					this.addNum(this.choose_id);
+					this.choose_id=null;
+					this.$router.push('score');
+				}
+				else {
+					alert('您还没有选择任何选项');
+				}
 			}
 		},
 		computed: mapState([
