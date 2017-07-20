@@ -8,7 +8,8 @@ Vue.use(Vuex)
 const state={
 	level:"第一周",
 	itemNum:1,
-	answer_id:[],//用户选择的答案列表
+	answer_id:[],//用户选择的答案序号
+	answer:[],//用户选择答案
 	itemDetails:[{
 		topic_name:"题目一",
 		topic_answer:[{

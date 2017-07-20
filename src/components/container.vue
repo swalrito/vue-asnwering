@@ -25,7 +25,7 @@
 		</li>
 	</ul>
 	</div>
-	<span class="button next_button" @click="nextQuestion(this.choose_id)" v-if="itemNum < itemDetails.length"></span>
+	<span class="button next_button" @click="nextQuestion" v-if="itemNum < itemDetails.length"></span>
 	<span class="button submit_button" @click="submitScore" v-else ></span>
 	</div>
 </section>
@@ -42,7 +42,7 @@ export default{
 		name:'container',
 		props:['fatherComponent'],
 		methods:{
-			...mapActions(['addNum']),
+			...mapActions(['addNum','initData']),
 			chooseName:type =>{
 				switch (type) {
 					case 0:return 'A';
@@ -84,6 +84,10 @@ export default{
   		'level', //第几周
   		'itemDetails', //题目详情
 	]),
+		created(){
+			document.body.style.backgroundImage = 'url(/static/img/1-1.jpg)';
+			this.initData();
+		}
 	}
 </script>
 
@@ -192,6 +196,8 @@ header span{
 	width: 0.67rem;
 	height: 0.67rem;
 	box-sizing: border-box;
+	text-align: center;
+	border: 1px solid;
 	border-radius: 0.33rem 0.33rem;
 }
 .button{
