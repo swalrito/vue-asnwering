@@ -1,0 +1,114 @@
+import Vue from 'vue'
+import Vuex from 'vuex'
+import actions from './action'
+import mutations from './mutations'
+
+Vue.use(Vuex)
+
+const state={
+	level:"第一周",
+	itemNum:1,
+	answer_id:[],//用户选择的答案列表
+	itemDetails:[{
+		topic_name:"题目一",
+		topic_answer:[{
+			topic_answer_id:1,
+			topic_answer_name:"答案aaaaa",
+			is_true:0
+		},{
+			topic_answer_id:2,
+			topic_answer_name:"答案bbbbb",
+			is_true:0
+		},{
+			topic_answer_id:3,
+			topic_answer_name:"正确答案cccc",
+			is_true:1
+		},{
+			topic_answer_id:4,
+			topic_answer_name:"答案dddd",
+			is_true:0
+		}]
+	},{
+		topic_name:"题目二",
+		topic_answer:[{
+			topic_answer_id:1,
+			topic_answer_name:"答案aaaaa",
+			is_true:0
+		},{
+			topic_answer_id:2,
+			topic_answer_name:"答案bbbbb",
+			is_true:0
+		},{
+			topic_answer_id:3,
+			topic_answer_name:"正确答案cccc",
+			is_true:1
+		},{
+			topic_answer_id:4,
+			topic_answer_name:"答案dddd",
+			is_true:0
+		}]
+	},{
+		topic_name:"题目三",
+		topic_answer:[{
+			topic_answer_id:1,
+			topic_answer_name:"答案aaaaa",
+			is_true:0
+		},{
+			topic_answer_id:2,
+			topic_answer_name:"答案bbbbb",
+			is_true:0
+		},{
+			topic_answer_id:3,
+			topic_answer_name:"正确答案cccc",
+			is_true:1
+		},{
+			topic_answer_id:4,
+			topic_answer_name:"答案dddd",
+			is_true:0
+		}]
+	},{
+		topic_name:"题目四",
+		topic_answer:[{
+			topic_answer_id:1,
+			topic_answer_name:"答案aaaaa",
+			is_true:0
+		},{
+			topic_answer_id:2,
+			topic_answer_name:"答案bbbbb",
+			is_true:0
+		},{
+			topic_answer_id:3,
+			topic_answer_name:"正确答案cccc",
+			is_true:1
+		},{
+			topic_answer_id:4,
+			topic_answer_name:"答案dddd",
+			is_true:0
+		}]
+	},{
+		topic_name:"题目五",
+		topic_answer:[{
+			topic_answer_id:1,
+			topic_answer_name:"答案aaaaa",
+			is_true:0
+		},{
+			topic_answer_id:2,
+			topic_answer_name:"答案bbbbb",
+			is_true:0
+		},{
+			topic_answer_id:3,
+			topic_answer_name:"正确答案cccc",
+			is_true:1
+		},{
+			topic_answer_id:4,
+			topic_answer_name:"答案dddd",
+			is_true:0
+		}]
+	}]
+}
+
+export default new Vuex.Store({
+	state,
+	actions,
+	mutations
+})

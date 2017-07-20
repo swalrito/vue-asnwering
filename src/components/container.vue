@@ -5,7 +5,7 @@
 		第一周
 		</span>
 		<span v-if="fatherComponent == 'details'">
-		第一题
+		题目{{itemNum}}
 		</span>
 	</header>
 
@@ -17,35 +17,62 @@
 
 	<div v-if="fatherComponent == 'details'" class="details">
 	<div class="details_content">
-		<p>题目一</p>
+		<p>{{itemDetails[itemNum-1].topic_name}}</p>
 	<ul>
-		<li>1111</li>
-		<li>2222</li>
-		<li>3333</li>
-		<li>4444</li>
+		<li v-for="(item,index)  in itemDetails[itemNum-1].topic_answer" @click="choosed(item.topic_answer_id)" class="clearfloat">
+		<span :class="{hasChoosed:choose_id==(index+1)}" class="index_button">{{chooseName(index)}}</span>
+		<span class="answer_name">{{item.topic_answer_name}}</span>
+		</li>
 	</ul>
 	</div>
-	<span class="button_next"></span>
+	<span class="button next_button" @click="nextQuestion(this.choose_id)" v-if="itemNum < itemDetails.length"></span>
+	<span class="button submit_button" @click="nextQuestion(this.choose_id)" v-else></span>
 	</div>
 </section>
 </template>
 
 <script>
-	export default
-	{
+import {mapState,mapActions} from 'vuex'
+export default{
+		data(){
+ 		return {
+ 			choose_id:null //选中的选项
+ 		} 
+		},
 		name:'container',
 		props:['fatherComponent'],
-		method:{
+		methods:{
+			...mapActions(['addNum']),
+			chooseName:type =>{
+				switch (type) {
+					case 0:return 'A';
+					case 1:return 'B';
+					case 2:return 'C';
+					case 3:return 'D';
+				}
+			},
+			nextQuestion() {
+					//判断是否选择了答案//
+				if(this.choose_id != null)
+				{
+					
+					this.addNum(this.choose_id);
+					this.choose_id=null;
 
+				}
+				else{
+					alert("您还没有选择任何选项");
+				}
+			},
+			choosed(num){
+				this.choose_id=num;
+			}
 		},
-		computed:{
-
-		},
-		created()
-		{
-			//初始化信息//
-		
-		}
+		computed: mapState([
+	  	'itemNum', //第几题
+  		'level', //第几周
+  		'itemDetails', //题目详情
+	]),
 	}
 </script>
 
@@ -100,7 +127,8 @@ header span{
 	margin-top: -4rem;
 }
 .btn_start{
-	background: url(../assets/img/1-4.png);
+	background: url(../assets/img/1-4.png) no-repeat;
+	background-size: 100% 100%;
 	position: absolute;
 	width: 2.31rem;
 	height: 1.12rem;
@@ -137,15 +165,36 @@ header span{
 .details_content ul{
 	position: relative;
 	top: 1rem;
+	left: 1.5rem;
 }
-
-.button_next{
+.details_content ul li .hasChoosed{
+	background-color: #ffd400;
+	color: #575757;
+	border-color: #ffd400;
+}
+.details_content span{
+	float: left;
+	margin-right: 0.67rem;
+}
+.details_content .index_button{
+	display: inline-block;
+	width: 0.67rem;
+	height: 0.67rem;
+	box-sizing: border-box;
+	border-radius: 0.33rem 0.33rem;
+}
+.button{
 	display: block;
 	position: absolute;
-	background: url(../assets/img/2-2.png) no-repeat;
 	width: 2.31rem;
 	height: 1.12rem;
 	left: 50%;
 	margin-left: -1.15rem;
+}
+.next_button{
+	background: url(../assets/img/2-2.png) no-repeat;
+}
+.submit_button{
+	background: url(../assets/img/3-1.png) no-repeat;
 }
 </style>

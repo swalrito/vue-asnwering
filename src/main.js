@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import container from './components/container'
 import routes from './router/index'
+import store from './sotre/'
 import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
@@ -11,5 +12,6 @@ const router = new VueRouter({
 })
 
 new Vue({
-	router
+	router,
+	store,
 }).$mount('#app')
